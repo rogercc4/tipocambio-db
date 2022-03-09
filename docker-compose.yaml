@@ -1,0 +1,12 @@
+version : '3'
+services:
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: tipocambiodb
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./scripts/01-crear_tabla.sql:/docker-entrypoint-initdb.d/1.sql"
